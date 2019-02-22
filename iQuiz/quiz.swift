@@ -8,6 +8,7 @@
 
 import UIKit
 
+//scores is the only mutable object declared in class. Everything else is read-only after initialize.
 class quiz {
     
     /*
@@ -60,17 +61,25 @@ class quiz {
     func getAnswers(key: String) -> Any {
         if((questions[key]) != nil) {
             return questions[key]!
-        } else {
-            return []
         }
+        return []
     }
     
+    /*
+     * Sets the element at the given index in scores to true. Returns element
+     * Returns false if index does not exist.
+     */
     func setCorrect(index: Int) -> Bool {
         if(index >= 0 && index < QCOUNT) {
             scores[index] = true
             return scores[index]
         }
         return false
+        /*
+         * Change function to check if answer is correct.
+         * Make an array or add to dictionary the correct answer (as an index value)
+         * sets true if correct answer
+         */
     }
     
     //Sets all scores array to array of false of size QCOUNT.
