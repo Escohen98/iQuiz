@@ -17,10 +17,10 @@ class quiz {
     * @param questions (NSDictionary<String, Array<String>) - A dictionary containing all of the questions
     * and an array of the answers for each question.
     */
-    init(subject: String, questions: NSDictionary/*, correct: Array<Int>*/) {
+    init(subject: String, questions: [String: ([String], Int)]/*, correct: Array<Int>*/) {
         self.subject = subject
         self.questions = questions //NSDictionary<String, Array<String>>
-        //Need to figure out how to import an NSDictionary<String, Array<[String, Bool>> explicitly. Necessary for the getQuestion, getAnswer, and setCorrect functions.
+        //Need to figure out how to import an NSDictionary<String, Array<[String], Bool>> explicitly. Necessary for the getQuestion, getAnswer, and setCorrect functions.
         //self.correct = correct
         QCOUNT = questions.count
         resetAnswers()
@@ -28,7 +28,7 @@ class quiz {
     
     private let QCOUNT : Int //Number of questions.
     private var subject : String = ""
-    private var questions : NSDictionary //Contains all questions/answer pairs (String/Array<String>)
+    private var questions : [String: ([String], Int)] //Contains all questions/answer pairs (String/Array<String>)
     private var scores : Array<Bool> = Array<Bool>() //Contains booleans of whether a user got the question correct or not.
     //private var correct : Array<Int> //Array of indexes of the correct answer for each question.
     
@@ -48,7 +48,7 @@ class quiz {
      * Returns an array of all of the questions.
      */
     func getQuestion(index: Int = -1) -> [Any] {
-        let keys = questions.allKeys
+        let keys = Array(questions.keys)
         if(index == -1) {
             return keys
         } else if index > QCOUNT-1 || index < 0 {
@@ -72,17 +72,26 @@ class quiz {
      * Sets the element at the given index in scores to true. Returns element
      * Returns false if index does not exist.
      */
-    func setCorrect(/*question: String,*/ index: Int) -> Bool {
-        if(index >= 0 && index < QCOUNT) {
+    func setCorrect(question: String, answer: String) -> Bool {
+        let index = Array(questions.keys).index(of: question) as! Int
+        if(isCorrect(question, answer)) {
             scores[index] = true
             return scores[index]
         }
         return false
-        /*
-         * Change function to check if answer is correct.
-         * Make an array or add to dictionary the correct answer (as an index value)
-         * sets true if correct answer
-         */
+        
+    }
+    
+    /*
+     * Checks if given answer is correct one for the given answer.
+     * Uses index value in tuple to check. Returns true if yes, false otherwise. 
+     */
+    func isCorrect(_ question: String, _ answer: String) -> Bool {
+        let qstn = questions[question]
+        if 	qstn!.0.index(of: answer) == qstn!.1 {
+            return true
+        }
+        return false
     }
     
     //Sets all scores array to array of false of size QCOUNT.
