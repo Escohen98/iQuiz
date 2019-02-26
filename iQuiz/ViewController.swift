@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 import Alamofire
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -45,6 +46,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        fetchData()
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -54,29 +56,81 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    //var quizzes : Array<(String, Dictionary<String, [String]>)>
-    //Taken from https://stackoverflow.com/questions/26364914/http-request-in-swift-with-post-method/26365148
+    var quizzes : Dictionary<String, Dictionary<String, Dictionary<String, Any>>>
+    //Taken from https://nearsoft.com/blog/how-to-get-started-with-alamofire/
     let url = "https://api.myjson.com/bins/19qiyy"
-   /* func fetchData() {
-    
-        // Set the URL the request is being made to.
-        let request = URLRequest(url: NSURL(string: url)! as URL)
-        do {
-            // Perform the request
-            var response: AutoreleasingUnsafeMutablePointer<URLResponse?>? = nil
-            let data = try NSURLConnection.sendSynchronousRequest(request, returning: response)
-    
-            // Convert the data to JSON
-            let jsonSerialized = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
-    
-            if let json = jsonSerialized, let url = json["url"], let explanation = json["explanation"] {
-                print(url)
-                print(explanation)
-            }
+    //[String: [String: [String: [[String], [String: Int]]]]
+    // Topic,   Question, answer,  Answers,  correct, Index
+   func fetchData() {
+    Alamofire.request(url).responseJSON { response in
+        if let jsonObj = response.result.value as? Dictionary<String, Dictionary<String, Dictionary<String, Any>>> {
+            
+            //print("JSON: \(jsonObj)") // serialized json response
+            //self.saveJSON(json: jsonObj)
+            //self.findContact()
         }
-    }*/
-}
+    }
+    }
+    
+    let managedObjectContext = (UIApplication.shared.delegate
+        as! AppDelegate).persistentContainer.viewContext
+    //Taken from https://www.techotopia.com/index.php/An_iOS_8_Swift_Core_Data_Tutorial
+    func saveJSON(json: NSDictionary) {
+        let entityDescription =
+            NSEntityDescription.entity(forEntityName: "JsonDict",
+                                       in: managedObjectContext)
+        
+        let contact = JsonDict(entity: entityDescription!,
+                               insertInto: managedObjectContext)
+        
+        contact.json = json
+        
+        do {
+            try managedObjectContext.save()
+            //Actions after saving
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
 
+    func findContact() {
+        let entityDescription =
+            NSEntityDescription.entity(forEntityName: "JsonDict",
+                                       in: managedObjectContext)
+        
+        let request: NSFetchRequest<JsonDict> = JsonDict.fetchRequest()
+        request.entity = entityDescription
+        
+        //let pred = NSPredicate(format: "(name = %@)", name.text!)
+        //request.predicate = pred
+        
+        do {
+            var results =
+                try managedObjectContext.fetch(request as!
+                    NSFetchRequest<NSFetchRequestResult>)
+            
+            if results.count > 0 {
+                let match = results[0] as! NSManagedObject
+                print(match)
+            } else {
+                print("No Match")
+            }
+            
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    //[String: [String: [String: [[String], [String: Int]]]]
+    // Topic,   Question, answer,  Answers,  correct, Index
+    var qzzs : Array<quiz>
+    func setQuizzes(json: Dictionary<String, Dictionary<String, Dictionary<String, Any>>>) {
+        for topic in json.keys {
+            let qstns = json[topic]
+            qzzs.append(quiz(subject: topic, questions: qstns!))
+        }
+    }
+}
 class QuizCell: UITableViewCell {
     @IBOutlet weak var title: UILabel! //30 char limit
     @IBOutlet weak var desc: UILabel! //Description; Short Sentence

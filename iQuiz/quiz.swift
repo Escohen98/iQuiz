@@ -17,7 +17,7 @@ class quiz {
     * @param questions (NSDictionary<String, Array<String>) - A dictionary containing all of the questions
     * and an array of the answers for each question.
     */
-    init(subject: String, questions: [String: ([String], Int)]/*, correct: Array<Int>*/) {
+    init(subject: String, questions: Dictionary<String, Dictionary<String, Any>>/*, correct: Array<Int>*/) {
         self.subject = subject
         self.questions = questions //NSDictionary<String, Array<String>>
         //Need to figure out how to import an NSDictionary<String, Array<[String], Bool>> explicitly. Necessary for the getQuestion, getAnswer, and setCorrect functions.
@@ -28,7 +28,7 @@ class quiz {
     
     private let QCOUNT : Int //Number of questions.
     private var subject : String = ""
-    private var questions : [String: ([String], Int)] //Contains all questions/answer pairs (String/Array<String>)
+    private var questions : Dictionary<String, Dictionary<String, Any>> //Contains all questions/answer pairs (String/Array<String>)
     private var scores : Array<Bool> = Array<Bool>() //Contains booleans of whether a user got the question correct or not.
     //private var correct : Array<Int> //Array of indexes of the correct answer for each question.
     
@@ -88,7 +88,7 @@ class quiz {
      */
     func isCorrect(_ question: String, _ answer: String) -> Bool {
         let qstn = questions[question]
-        if 	qstn!.0.index(of: answer) == qstn!.1 {
+        if 	qstn![0].index(of: answer) == qstn![1] {
             return true
         }
         return false

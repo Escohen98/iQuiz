@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490F6D082225318F00CCBBE8 /* iQuiz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 490F6D062225318F00CCBBE8 /* iQuiz.xcdatamodeld */; };
 		496A2CF82216653100F32183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A2CF72216653100F32183 /* AppDelegate.swift */; };
 		496A2CFA2216653100F32183 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A2CF92216653100F32183 /* ViewController.swift */; };
 		496A2CFD2216653100F32183 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496A2CFB2216653100F32183 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		0FF63CBEBF5CFBAB0493BA51 /* Pods-iQuiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iQuiz.release.xcconfig"; path = "Target Support Files/Pods-iQuiz/Pods-iQuiz.release.xcconfig"; sourceTree = "<group>"; };
+		490F6D072225318F00CCBBE8 /* iQuiz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iQuiz.xcdatamodel; sourceTree = "<group>"; };
 		496A2CF42216653100F32183 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		496A2CF72216653100F32183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		496A2CF92216653100F32183 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +52,6 @@
 				BBF3CAF6437D2F2166594CAE /* Pods-iQuiz.debug.xcconfig */,
 				0FF63CBEBF5CFBAB0493BA51 /* Pods-iQuiz.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -77,6 +78,7 @@
 			children = (
 				496A2D0B221CEE1500F32183 /* images */,
 				496A2CF72216653100F32183 /* AppDelegate.swift */,
+				490F6D062225318F00CCBBE8 /* iQuiz.xcdatamodeld */,
 				496A2CF92216653100F32183 /* ViewController.swift */,
 				496A2D09221CD9F600F32183 /* quiz.swift */,
 				496A2CFB2216653100F32183 /* Main.storyboard */,
@@ -216,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490F6D082225318F00CCBBE8 /* iQuiz.xcdatamodeld in Sources */,
 				496A2CFA2216653100F32183 /* ViewController.swift in Sources */,
 				496A2CF82216653100F32183 /* AppDelegate.swift in Sources */,
 				496A2D0A221CD9F600F32183 /* quiz.swift in Sources */,
@@ -374,6 +377,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.washington.escohen.iQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -393,6 +397,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.washington.escohen.iQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -420,6 +425,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		490F6D062225318F00CCBBE8 /* iQuiz.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				490F6D072225318F00CCBBE8 /* iQuiz.xcdatamodel */,
+			);
+			currentVersion = 490F6D072225318F00CCBBE8 /* iQuiz.xcdatamodel */;
+			path = iQuiz.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 496A2CEC2216653100F32183 /* Project object */;
 }
