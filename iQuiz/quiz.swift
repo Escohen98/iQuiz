@@ -17,20 +17,21 @@ class quiz {
     * @param questions (NSDictionary<String, Array<String>) - A dictionary containing all of the questions
     * and an array of the answers for each question.
     */
-    init(subject: String, questions: Dictionary<String, Dictionary<String, Any>>/*, correct: Array<Int>*/) {
+    init(subject: String, questions: Dictionary<String, Dictionary<String, [String]>>, description: String, icon: String) {
         self.subject = subject
         self.questions = questions //NSDictionary<String, Array<String>>
-        //Need to figure out how to import an NSDictionary<String, Array<[String], Bool>> explicitly. Necessary for the getQuestion, getAnswer, and setCorrect functions.
-        //self.correct = correct
+        self.description = description
+        self.icon = icon
         QCOUNT = questions.count
         resetAnswers()
     }
     
     private let QCOUNT : Int //Number of questions.
-    private var subject : String = ""
-    private var questions : Dictionary<String, Dictionary<String, Any>> //Contains all questions/answer pairs (String/Array<String>)
+    private let subject : String
+    private let questions : Dictionary<String, Dictionary<String, [String]>> //Contains all questions/answer pairs (String/Array<String>)
     private var scores : Array<Bool> = Array<Bool>() //Contains booleans of whether a user got the question correct or not.
-    //private var correct : Array<Int> //Array of indexes of the correct answer for each question.
+    private let description: String
+    private let icon: String
     
     //Returns the subject
     func getSubject() -> String {
@@ -40,6 +41,14 @@ class quiz {
     //Returns the number of questions.
     func getQuestionCount() -> Int {
         return QCOUNT
+    }
+    
+    func getDescription() -> String {
+        return description
+    }
+    
+    func getIcon() -> String {
+        return icon
     }
     
     /*
@@ -73,10 +82,10 @@ class quiz {
      * Returns false if index does not exist.
      */
     func setCorrect(question: String, answer: String) -> Bool {
-       // let index = Array(questions.keys).index(of: question) as! Int
+       let index = Array(questions.keys).index(of: question) as! Int
         if(isCorrect(question, answer)) {
-            //scores[index] = true
-            //return scores[index]
+            scores[index] = true
+            return scores[index]
         }
         return false
         
@@ -88,7 +97,7 @@ class quiz {
      */
     func isCorrect(_ question: String, _ answer: String) -> Bool {
         let qstn = questions[question]
-        if 	qstn![0].index(of: answer) == qstn![1] {
+        if 	qstn!["answer"]!.index(of: answer) == Int(qstn!["correct"]![0]) {
             return true
         }
         return false

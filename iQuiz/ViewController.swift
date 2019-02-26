@@ -14,19 +14,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //https://api.myjson.com/bins/19qiyy
     @IBOutlet weak var tableView: UITableView!
     
-    let titles: [String] = ["Mathematics", "Marvel Super Heroes", "Science"]
+    var titles: [String] = []
     
-    let descriptions: [String] = ["Test your math skills!", "Woh, Superheroes!", "What's an atom?"]
-    let icons: [String] = ["images/math_ico.jpg", "images/marvel_ico.png", "images/science_ico.jpg"]
+    let descriptions: [String] = ["Test your math skills!", "What's an atom?", "Visit the Moonlanding Set!", "Countries can be big."]
+    let icons: [String] = ["images/math_ico.jpg", "images/science_ico.jpg", "images/history_ico.jpg", "images/country_ico.jpeg"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titles.count
+        return descriptions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "qcell", for: indexPath) as! QuizCell
-        let str = titles[indexPath.item]
-        
+        print("indexPath: \(indexPath.item)")
+        print("qzzs length: \(qzzs.count)")
+        let str = qzzs[indexPath.item].getSubject()
+        print(str)
         //Takes first 30 characters of a string
         //Because substrings are so unnecessarily complicated.
         if(str.count > 30) {
@@ -37,18 +39,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             cell.title.text = str
         }
-        cell.desc.text = descriptions[indexPath.item]
-        cell.imageView?.image = UIImage(named: icons[indexPath.item])
-        print("Cell Initialized")
+        cell.desc.text = qzzs[indexPath.item].getDescription()
+        cell.imageView?.image = UIImage(named: qzzs[indexPath.item].getIcon())
         return cell
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        fetchData()
+        if(fetchData()) {
         tableView.delegate = self
         tableView.dataSource = self
+        }
     }
     
     @IBAction func settings(_ btn: UIBarButtonItem!) {
@@ -56,15 +58,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    var quizzes : Dictionary<String, Dictionary<String, Dictionary<String, Any>>>
     //Taken from https://nearsoft.com/blog/how-to-get-started-with-alamofire/
-    let url = "https://api.myjson.com/bins/19qiyy"
+    let url = "https://api.myjson.com/bins/c2gpm"
     //[String: [String: [String: [[String], [String: Int]]]]
     // Topic,   Question, answer,  Answers,  correct, Index
-   func fetchData() {
+    //Fetches JSON object from API. Converts to dictionary. Stores to local storage.
+   func fetchData() -> Bool {
     Alamofire.request(url).responseJSON { response in
-        if let jsonObj = response.result.value as? Dictionary<String, Dictionary<String, Dictionary<String, Any>>> {
-            
+        if let jsonObj = response.result.value as? Dictionary<String, Dictionary<String, Dictionary<String, [String]>>> {
+            self.setQuizzes(json: jsonObj)
             //print("JSON: \(jsonObj)") // serialized json response
             //self.saveJSON(json: jsonObj)
             //self.findContact()
@@ -123,11 +125,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //[String: [String: [String: [[String], [String: Int]]]]
     // Topic,   Question, answer,  Answers,  correct, Index
-    var qzzs : Array<quiz>
-    func setQuizzes(json: Dictionary<String, Dictionary<String, Dictionary<String, Any>>>) {
+    var qzzs : Array<quiz> = []
+    func setQuizzes(json: Dictionary<String, Dictionary<String, Dictionary<String, [String]>>>) {
+        var i = 0
         for topic in json.keys {
+            titles.append(topic)
             let qstns = json[topic]
-            qzzs.append(quiz(subject: topic, questions: qstns!))
+            qzzs.append(quiz(subject: topic, questions: qstns!, description: descriptions[i], icon: icons[i]))
+            i += 1
         }
     }
 }
