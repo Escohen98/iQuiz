@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamo
+import Alamofire
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //https://api.myjson.com/bins/19qiyy
@@ -54,10 +54,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    var quizzes : Array<(String, Dictionary<String, [String]>)>
+    //var quizzes : Array<(String, Dictionary<String, [String]>)>
     //Taken from https://stackoverflow.com/questions/26364914/http-request-in-swift-with-post-method/26365148
     let url = "https://api.myjson.com/bins/19qiyy"
-    func fetchData() {
+   /* func fetchData() {
     
         // Set the URL the request is being made to.
         let request = URLRequest(url: NSURL(string: url)! as URL)
@@ -74,7 +74,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print(explanation)
             }
         }
-    }
+    }*/
 }
 
 class QuizCell: UITableViewCell {

@@ -73,10 +73,10 @@ class quiz {
      * Returns false if index does not exist.
      */
     func setCorrect(question: String, answer: String) -> Bool {
-        let index = Array(questions.keys).index(of: question) as! Int
+       // let index = Array(questions.keys).index(of: question) as! Int
         if(isCorrect(question, answer)) {
-            scores[index] = true
-            return scores[index]
+            //scores[index] = true
+            //return scores[index]
         }
         return false
         
