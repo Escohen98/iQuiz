@@ -15,8 +15,12 @@ class question: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBOutlet weak var question: UILabel!
     
-
+    var correct : Int = -1
+    var score = 0
+    var questions : Dictionary<String, Dictionary<String, [String]>> = [:]
+    
     /*
     // MARK: - Navigation
 

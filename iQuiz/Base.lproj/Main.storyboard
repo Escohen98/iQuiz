@@ -24,6 +24,7 @@
                                     <barButtonItem title="Settings" id="SW3-FF-Qb0">
                                         <connections>
                                             <action selector="settings:" destination="BYZ-38-t0r" id="cXL-ZN-3Z8"/>
+                                            <segue destination="qbR-Nf-apK" kind="show" id="BNy-rU-yk5"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -108,7 +109,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[The Question]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bs7-PX-Tfc">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[The Question]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bs7-PX-Tfc" userLabel="Question">
                                 <rect key="frame" x="106.5" y="45" width="162" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
@@ -137,6 +138,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kqc-IU-e3J"/>
                     </view>
+                    <connections>
+                        <outlet property="answer" destination="u16-6p-Eb8" id="mvQ-Ya-FUP"/>
+                        <outlet property="quesrtion" destination="bs7-PX-Tfc" id="bWg-Vs-c0A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1Y-y8-PQK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,6 +195,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PgL-dY-LOS"/>
                     </view>
+                    <connections>
+                        <outlet property="descriptiveText" destination="kFu-TG-bY5" id="BGz-pU-PMX"/>
+                        <outlet property="score" destination="V1b-fE-gJF" id="jOO-Wl-O5i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="viI-ze-SJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -247,7 +256,7 @@
                                             <constraint firstItem="gog-2Y-bXz" firstAttribute="centerX" secondItem="gZ1-Sq-zbA" secondAttribute="centerX" id="ATW-C6-cbr"/>
                                         </constraints>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="i11-Ty-iv9">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="i11-Ty-iv9" userLabel="Cell2">
                                         <rect key="frame" x="205" y="0.0" width="150" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -321,6 +330,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ciw-uK-lK0"/>
                     </view>
+                    <connections>
+                        <outlet property="question" destination="OZm-wf-wPB" id="FGQ-R2-Pbz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Csf-ug-QUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ear-3O-Rj8">
@@ -335,5 +347,76 @@
             </objects>
             <point key="canvasLocation" x="392.80000000000001" y="-564.46776611694156"/>
         </scene>
+        <!--Options-->
+        <scene sceneID="vlw-Pr-VmR">
+            <objects>
+                <viewController id="qbR-Nf-apK" customClass="options" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MrH-y2-gO6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="fill" text="https://api.myjson.com/bins/c2gpm" borderStyle="roundedRect" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fmQ-kS-DCM">
+                                <rect key="frame" x="63" y="137" width="249" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="url:" destination="qbR-Nf-apK" eventType="editingDidEnd" id="aot-r2-P4x"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4u-65-uRp">
+                                <rect key="frame" x="155.5" y="40" width="64" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwJ-v8-a5B">
+                                <rect key="frame" x="16" y="108" width="33" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yaC-s9-fcz">
+                                <rect key="frame" x="153" y="226" width="69" height="30"/>
+                                <state key="normal" title="Download"/>
+                                <connections>
+                                    <action selector="fetchData:" destination="qbR-Nf-apK" eventType="touchUpInside" id="k1y-g9-x8Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdC-Kp-fat">
+                                <rect key="frame" x="18" y="35" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="QUP-qn-p3P"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="j4u-65-uRp" firstAttribute="top" secondItem="WtJ-iv-dKM" secondAttribute="top" constant="20" id="4vQ-PE-bg1"/>
+                            <constraint firstItem="xwJ-v8-a5B" firstAttribute="top" secondItem="jdC-Kp-fat" secondAttribute="bottom" constant="43" id="CdA-T3-3vC"/>
+                            <constraint firstItem="yaC-s9-fcz" firstAttribute="centerX" secondItem="MrH-y2-gO6" secondAttribute="centerX" id="GH9-RX-u0j"/>
+                            <constraint firstItem="fmQ-kS-DCM" firstAttribute="top" secondItem="xwJ-v8-a5B" secondAttribute="bottom" constant="8" id="IEL-my-8TU"/>
+                            <constraint firstItem="xwJ-v8-a5B" firstAttribute="leading" secondItem="WtJ-iv-dKM" secondAttribute="leading" constant="16" id="JkO-Ma-QiR"/>
+                            <constraint firstItem="fmQ-kS-DCM" firstAttribute="centerX" secondItem="MrH-y2-gO6" secondAttribute="centerX" id="MNg-WE-bDI"/>
+                            <constraint firstItem="yaC-s9-fcz" firstAttribute="top" secondItem="fmQ-kS-DCM" secondAttribute="bottom" constant="59" id="exd-2F-W1O"/>
+                            <constraint firstItem="jdC-Kp-fat" firstAttribute="baseline" secondItem="j4u-65-uRp" secondAttribute="baseline" id="ftd-wS-bO3"/>
+                            <constraint firstItem="j4u-65-uRp" firstAttribute="centerX" secondItem="MrH-y2-gO6" secondAttribute="centerX" id="lWO-fK-xPY"/>
+                            <constraint firstItem="WtJ-iv-dKM" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yaC-s9-fcz" secondAttribute="bottom" constant="10" id="pcY-ik-HSq"/>
+                            <constraint firstItem="jdC-Kp-fat" firstAttribute="leading" secondItem="WtJ-iv-dKM" secondAttribute="leading" constant="18" id="xuA-u7-MXL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WtJ-iv-dKM"/>
+                    </view>
+                    <connections>
+                        <outlet property="url" destination="fmQ-kS-DCM" id="pHN-OQ-LoA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4j-PZ-gmN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1084" y="-170.46476761619192"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="QUP-qn-p3P"/>
+    </inferredMetricsTieBreakers>
 </document>

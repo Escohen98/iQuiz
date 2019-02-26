@@ -9,5 +9,10 @@
 import UIKit
 
 class finished: UIViewController {
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    @IBOutlet weak var descriptiveText: UILabel!
+    @IBOutlet weak var score: UILabel!
 }

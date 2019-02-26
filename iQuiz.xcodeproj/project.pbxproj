@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		490F6D082225318F00CCBBE8 /* iQuiz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 490F6D062225318F00CCBBE8 /* iQuiz.xcdatamodeld */; };
-		490F6D0A222566F000CCBBE8 /* Topics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490F6D09222566F000CCBBE8 /* Topics.swift */; };
 		496A2CF82216653100F32183 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A2CF72216653100F32183 /* AppDelegate.swift */; };
 		496A2CFA2216653100F32183 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496A2CF92216653100F32183 /* ViewController.swift */; };
 		496A2CFD2216653100F32183 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496A2CFB2216653100F32183 /* Main.storyboard */; };
@@ -19,13 +18,14 @@
 		49C518822225C41800211A41 /* answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C518812225C41800211A41 /* answer.swift */; };
 		49C518842225C42400211A41 /* finished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C518832225C42400211A41 /* finished.swift */; };
 		49C518862225C57F00211A41 /* question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C518852225C57F00211A41 /* question.swift */; };
+		49C518882225E84300211A41 /* quiz.json in Resources */ = {isa = PBXBuildFile; fileRef = 49C518872225E84300211A41 /* quiz.json */; };
+		49C5188A2225F27600211A41 /* options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C518892225F27600211A41 /* options.swift */; };
 		E6284ACE684C217CDC43A629 /* Pods_iQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52FB9D8466F6651D1B67D789 /* Pods_iQuiz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0FF63CBEBF5CFBAB0493BA51 /* Pods-iQuiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iQuiz.release.xcconfig"; path = "Target Support Files/Pods-iQuiz/Pods-iQuiz.release.xcconfig"; sourceTree = "<group>"; };
 		490F6D072225318F00CCBBE8 /* iQuiz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iQuiz.xcdatamodel; sourceTree = "<group>"; };
-		490F6D09222566F000CCBBE8 /* Topics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topics.swift; sourceTree = "<group>"; };
 		496A2CF42216653100F32183 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		496A2CF72216653100F32183 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		496A2CF92216653100F32183 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +38,8 @@
 		49C518812225C41800211A41 /* answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = answer.swift; sourceTree = "<group>"; };
 		49C518832225C42400211A41 /* finished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finished.swift; sourceTree = "<group>"; };
 		49C518852225C57F00211A41 /* question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = question.swift; sourceTree = "<group>"; };
+		49C518872225E84300211A41 /* quiz.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quiz.json; sourceTree = "<group>"; };
+		49C518892225F27600211A41 /* options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = options.swift; sourceTree = "<group>"; };
 		52FB9D8466F6651D1B67D789 /* Pods_iQuiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iQuiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF3CAF6437D2F2166594CAE /* Pods-iQuiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iQuiz.debug.xcconfig"; path = "Target Support Files/Pods-iQuiz/Pods-iQuiz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 		496A2CF62216653100F32183 /* iQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				49C518872225E84300211A41 /* quiz.json */,
 				496A2D0B221CEE1500F32183 /* images */,
 				496A2CF72216653100F32183 /* AppDelegate.swift */,
 				490F6D062225318F00CCBBE8 /* iQuiz.xcdatamodeld */,
@@ -91,9 +94,9 @@
 				496A2D09221CD9F600F32183 /* quiz.swift */,
 				49C518812225C41800211A41 /* answer.swift */,
 				49C518832225C42400211A41 /* finished.swift */,
-				490F6D09222566F000CCBBE8 /* Topics.swift */,
 				49C518852225C57F00211A41 /* question.swift */,
 				496A2CFB2216653100F32183 /* Main.storyboard */,
+				49C518892225F27600211A41 /* options.swift */,
 				496A2CFE2216653200F32183 /* Assets.xcassets */,
 				496A2D002216653200F32183 /* LaunchScreen.storyboard */,
 				496A2D032216653200F32183 /* Info.plist */,
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				496A2D0C221CEE1500F32183 /* images in Resources */,
+				49C518882225E84300211A41 /* quiz.json in Resources */,
 				496A2D022216653200F32183 /* LaunchScreen.storyboard in Resources */,
 				496A2CFF2216653200F32183 /* Assets.xcassets in Resources */,
 				496A2CFD2216653100F32183 /* Main.storyboard in Resources */,
@@ -211,12 +215,14 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-iQuiz/Pods-iQuiz-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -232,10 +238,10 @@
 			files = (
 				490F6D082225318F00CCBBE8 /* iQuiz.xcdatamodeld in Sources */,
 				496A2CFA2216653100F32183 /* ViewController.swift in Sources */,
-				490F6D0A222566F000CCBBE8 /* Topics.swift in Sources */,
 				49C518822225C41800211A41 /* answer.swift in Sources */,
 				496A2CF82216653100F32183 /* AppDelegate.swift in Sources */,
 				49C518842225C42400211A41 /* finished.swift in Sources */,
+				49C5188A2225F27600211A41 /* options.swift in Sources */,
 				49C518862225C57F00211A41 /* question.swift in Sources */,
 				496A2D0A221CD9F600F32183 /* quiz.swift in Sources */,
 			);

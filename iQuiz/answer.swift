@@ -9,5 +9,10 @@
 import UIKit
 
 class answer: UIViewController {
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    @IBOutlet weak var question: UILabel!
+    @IBOutlet weak var answer: UILabel!
 }

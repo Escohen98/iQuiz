@@ -29,7 +29,7 @@ class quiz {
     private let QCOUNT : Int //Number of questions.
     private let subject : String
     private let questions : Dictionary<String, Dictionary<String, [String]>> //Contains all questions/answer pairs (String/Array<String>)
-    private var scores : Array<Bool> = Array<Bool>() //Contains booleans of whether a user got the question correct or not.
+    private var correct = 0 //Contains booleans of whether a user got the question correct or not.
     private let description: String
     private let icon: String
     
@@ -78,14 +78,13 @@ class quiz {
     }
     
     /*
-     * Sets the element at the given index in scores to true. Returns element
-     * Returns false if index does not exist.
+     * Adds 1 to correct if answer is correct, returns true
+     * Returns false if answer is incorrect
      */
     func setCorrect(question: String, answer: String) -> Bool {
-       let index = Array(questions.keys).index(of: question) as! Int
         if(isCorrect(question, answer)) {
-            scores[index] = true
-            return scores[index]
+            correct += 1
+            return true
         }
         return false
         
@@ -103,11 +102,9 @@ class quiz {
         return false
     }
     
-    //Sets all scores array to array of false of size QCOUNT.
+    //Sets correct answers to 0.
     func resetAnswers() {
-        for _ in 1...QCOUNT {
-            scores.append(false)
-        }
+        correct = 0
     }
     
 }
