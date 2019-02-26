@@ -47,10 +47,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if(fetchData()) {
+        fetchData()
         tableView.delegate = self
         tableView.dataSource = self
-        }
     }
     
     @IBAction func settings(_ btn: UIBarButtonItem!) {
@@ -63,7 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //[String: [String: [String: [[String], [String: Int]]]]
     // Topic,   Question, answer,  Answers,  correct, Index
     //Fetches JSON object from API. Converts to dictionary. Stores to local storage.
-   func fetchData() -> Bool {
+   func fetchData() {
     Alamofire.request(url).responseJSON { response in
         if let jsonObj = response.result.value as? Dictionary<String, Dictionary<String, Dictionary<String, [String]>>> {
             self.setQuizzes(json: jsonObj)
