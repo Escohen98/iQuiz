@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Alamo
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    //https://api.myjson.com/bins/19qiyy
     @IBOutlet weak var tableView: UITableView!
     
     let titles: [String] = ["Mathematics", "Marvel Super Heroes", "Science"]
@@ -52,15 +54,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    var quizzes : Array<(String, Dictionary<String, [String]>)>
+    //Taken from https://stackoverflow.com/questions/26364914/http-request-in-swift-with-post-method/26365148
+    let url = "https://api.myjson.com/bins/19qiyy"
+    func fetchData() {
     
+        // Set the URL the request is being made to.
+        let request = URLRequest(url: NSURL(string: url)! as URL)
+        do {
+            // Perform the request
+            var response: AutoreleasingUnsafeMutablePointer<URLResponse?>? = nil
+            let data = try NSURLConnection.sendSynchronousRequest(request, returning: response)
+    
+            // Convert the data to JSON
+            let jsonSerialized = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]
+    
+            if let json = jsonSerialized, let url = json["url"], let explanation = json["explanation"] {
+                print(url)
+                print(explanation)
+            }
+        }
+    }
 }
-/*
-protocol quizRepository {
-    func getNumber() -> UInt
-    func getQuestions -> [String]
-    func saveAnswers
-}
-*/
 
 class QuizCell: UITableViewCell {
     @IBOutlet weak var title: UILabel! //30 char limit

@@ -102,3 +102,9 @@ class quiz {
     }
     
 }
+
+protocol QuizRepository {
+    func getTopics() -> [quiz]
+    func saveQuiz(data: [quiz]) -> Bool
+    func findQuizByTopic(_ topic: String) -> [quiz]
+}
