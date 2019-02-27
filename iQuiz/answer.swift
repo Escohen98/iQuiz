@@ -33,10 +33,14 @@ class Answer: UIViewController {
     var answerImport = ""
     var questionImport = ""
     
+    deinit {
+        continueOn = nil
+        results = nil
+    }
     
     //Loads next question if available, otherwise goes to finished class.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "continue") {
+        if segue.identifier == "continue" {
             let questionVC = segue.destination as! question
             questionVC.quizObj = quizObj
         } else if segue.identifier == "results" {

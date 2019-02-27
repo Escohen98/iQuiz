@@ -135,7 +135,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <action selector="continue:" destination="Yp2-U1-Bzj" eventType="touchUpInside" id="bhC-k7-wcF"/>
                                     <segue destination="4em-pZ-zA4" kind="show" identifier="continue" id="SCe-0n-zai"/>
                                 </connections>
                             </button>
@@ -144,7 +143,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Results"/>
                                 <connections>
-                                    <action selector="results:" destination="Yp2-U1-Bzj" eventType="touchUpInside" id="cAw-e8-YGV"/>
                                     <segue destination="1ec-v5-odR" kind="show" identifier="results" id="Wsr-Zz-UjJ"/>
                                 </connections>
                             </button>
@@ -167,9 +165,9 @@
                     </view>
                     <connections>
                         <outlet property="answer" destination="Zrj-U9-Ok0" id="9gW-z6-VMI"/>
-                        <outlet property="continueOn" destination="hJS-t9-Sp0" id="gm3-1C-ASv"/>
+                        <outlet property="continueOn" destination="hJS-t9-Sp0" id="u5t-cs-P7c"/>
                         <outlet property="question" destination="J3u-zA-9VB" id="awW-xg-4fQ"/>
-                        <outlet property="results" destination="kXi-ny-wqg" id="Ete-zU-oV6"/>
+                        <outlet property="results" destination="kXi-ny-wqg" id="luy-fV-hcY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1li-Qc-Wc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,7 +382,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pAh-xU-AHd"/>
         <segue reference="SCe-0n-zai"/>
         <segue reference="wZ9-Ay-cqu"/>
     </inferredMetricsTieBreakers>
