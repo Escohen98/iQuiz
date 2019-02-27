@@ -42,6 +42,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.tag = indexPath.item
         return cell
     }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,8 +110,5 @@ class QuizCell: UITableViewCell {
     @IBOutlet weak var title: UILabel! //30 char limit
     @IBOutlet weak var desc: UILabel! //Description; Short Sentence
     @IBOutlet weak var icon: UIImageView! //Image to represent quiz
-    
-    
-    
     
 }

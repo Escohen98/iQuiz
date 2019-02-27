@@ -10,6 +10,18 @@ import UIKit
 import SwiftyJSON
 
 class question: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "questcell", for: indexPath) as! questionCell
+        cell.tag = indexPath.item
+        cell.label.text = quizObj.getAnswers(index: quizObj.answered)[indexPath.item]
+        print("Done")
+        return cell
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,19 +37,8 @@ class question: UIViewController, UICollectionViewDelegate, UICollectionViewData
     
     @IBOutlet weak var colView: UICollectionView!
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "questcell", for: indexPath) as! questionCell
-        cell.tag = indexPath.item
-        cell.lb.text = quizObj.getAnswers(index: quizObj.answered)[indexPath.item]
-        print("Done")
-        return cell
-    }
 }
 
 class questionCell : UICollectionViewCell {
-    @IBOutlet weak var lb: UILabel!
+    @IBOutlet weak var label: UILabel!
 }
