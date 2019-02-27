@@ -17,7 +17,8 @@ class question: UIViewController, UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "questcell", for: indexPath) as! questionCell
         cell.tag = indexPath.item
-        cell.label.text = quizObj.getAnswers(index: quizObj.answered)[indexPath.item]
+        cell.button.setTitle(quizObj.getAnswers(index: quizObj.answered)[indexPath.item], for: .normal)
+            cell.button.tag = indexPath.item
         print("Done")
         return cell
     }
@@ -28,17 +29,24 @@ class question: UIViewController, UICollectionViewDelegate, UICollectionViewData
         
         let qText = quizObj.getQuestion(index: quizObj.answered) as? [String]
         question.text = qText?[0]
+        submit.isEnabled = false
         colView.delegate = self
         colView.dataSource = self
     }
     @IBOutlet weak var question: UILabel!
+    @IBOutlet weak var submit: UIButton!
     
     var quizObj : quiz = quiz(subject: "", questions: [JSON("")], description: "", icon: "")
     
     @IBOutlet weak var colView: UICollectionView!
+    private var selected = -1;
+    @IBAction func setSelected(_ sender: UIButton) {
+        selected = sender.tag
+    }
     
 }
 
 class questionCell : UICollectionViewCell {
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var button: UIButton!
+    
 }
