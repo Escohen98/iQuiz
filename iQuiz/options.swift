@@ -25,8 +25,7 @@ class options: UIViewController {
     }
 }
 
-class download {
-    init(_ url: String, _ VC: UIViewController) {
+func download(_ url: String, _ VC: UIViewController) {
         Alamofire.request(url).responseJSON{response in
             if response.result.value != nil {
                 let data = JSON(response.result.value as Any)
@@ -47,5 +46,4 @@ class download {
                 
             }
         }
-    }
 }
