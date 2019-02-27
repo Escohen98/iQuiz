@@ -57,8 +57,8 @@ class question: UIViewController, UICollectionViewDelegate, UICollectionViewData
             }
             quizObj.answered += 1
             answerVC.quizObj = quizObj
-            answerVC.answer.text = selectedAnswer
-            answerVC.question.text = question.text
+            answerVC.answerImport = selectedAnswer
+            answerVC.questionImport = question.text!
         }
     }
     

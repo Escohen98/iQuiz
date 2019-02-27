@@ -72,12 +72,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }else{
             print("No JSON Found")
-            downloadFile().download(url, self)
+            options().download(url, self)
             if !flag {
                 flag = true
                 isSaved()
             } else {
-                let alert = UIAlertController(title: "Oops.", message: "Something Went Wrong.", preferredStyle: UIAlertController.Style.alert)
+                let alert = UIAlertController(title: "Something went wrong.", message: "Please download quiz in the Settings.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }

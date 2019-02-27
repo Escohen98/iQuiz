@@ -21,12 +21,9 @@ class options: UIViewController {
     var baseURL : String = ""
     @IBOutlet weak var url: UITextField!
     @IBAction func fetchData(_ sender: Any) {
-        downloadFile().download(baseURL, self)
+        download(baseURL, self)
     }
-}
-
-class downloadFile {
-    init() {}
+    
     func download(_ url: String, _ VC: UIViewController) {
         Alamofire.request(url).responseJSON{response in
             if response.result.value != nil {
@@ -50,3 +47,4 @@ class downloadFile {
         }
     }
 }
+

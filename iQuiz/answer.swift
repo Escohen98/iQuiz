@@ -18,16 +18,20 @@ class Answer: UIViewController {
             results.isHidden = false
             continueOn.isHidden = true
         }
+        answer.text = answerImport
+        question.text = questionImport
         self.view.backgroundColor = backgroundColor
     }
     @IBOutlet weak var question: UILabel!
     @IBOutlet weak var answer: UILabel!
-    
     @IBOutlet weak var results: UIButton!
     @IBOutlet weak var continueOn: UIButton!
     
     var quizObj : quiz = quiz(subject: "", questions: [JSON("")], description: "", icon: "")
     var backgroundColor = UIColor.red
+    var answerImport = ""
+    var questionImport = ""
+    
     
     //Updates score and sneds data to answer class.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

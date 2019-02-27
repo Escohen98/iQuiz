@@ -113,7 +113,7 @@ class quiz {
     func getCorrect(_ index: Int) -> String {
         let ans = getAnswers(index: index)
         let correct = questions[index]["answer"].stringValue
-        return ans[Int(correct)!]
+        return ans[Int(correct)!-1]
     }
     
     //Sets correct answers and answered questions to 0.
