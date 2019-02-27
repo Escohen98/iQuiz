@@ -134,14 +134,29 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continue:" destination="Yp2-U1-Bzj" eventType="touchUpInside" id="bhC-k7-wcF"/>
+                                    <segue destination="4em-pZ-zA4" kind="show" identifier="continue" id="SCe-0n-zai"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kXi-ny-wqg">
+                                <rect key="frame" x="147" y="522" width="80" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Results"/>
+                                <connections>
+                                    <action selector="results:" destination="Yp2-U1-Bzj" eventType="touchUpInside" id="cAw-e8-YGV"/>
+                                    <segue destination="1ec-v5-odR" kind="show" identifier="results" id="Wsr-Zz-UjJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ee6-ih-Lhh" firstAttribute="centerX" secondItem="QeO-BJ-k8f" secondAttribute="centerX" id="8pS-G5-hze"/>
                             <constraint firstItem="Zrj-U9-Ok0" firstAttribute="centerX" secondItem="QeO-BJ-k8f" secondAttribute="centerX" id="QIV-40-zT8"/>
+                            <constraint firstItem="hJS-t9-Sp0" firstAttribute="top" secondItem="kXi-ny-wqg" secondAttribute="bottom" id="UXD-u4-aay"/>
                             <constraint firstItem="hJS-t9-Sp0" firstAttribute="centerX" secondItem="Zrj-U9-Ok0" secondAttribute="centerX" id="XE0-Be-lZD"/>
                             <constraint firstItem="J3u-zA-9VB" firstAttribute="top" secondItem="FeK-7P-HHU" secondAttribute="top" constant="15" id="cjE-bQ-hrw"/>
+                            <constraint firstItem="kXi-ny-wqg" firstAttribute="centerX" secondItem="QeO-BJ-k8f" secondAttribute="centerX" id="db5-ZS-Teh"/>
                             <constraint firstItem="J3u-zA-9VB" firstAttribute="centerX" secondItem="QeO-BJ-k8f" secondAttribute="centerX" id="kmZ-CK-kC1"/>
                             <constraint firstItem="FeK-7P-HHU" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hJS-t9-Sp0" secondAttribute="bottom" constant="10" id="mYe-c3-r3h"/>
                             <constraint firstItem="Zrj-U9-Ok0" firstAttribute="top" secondItem="ee6-ih-Lhh" secondAttribute="bottom" constant="8" id="sGN-TT-x73"/>
@@ -151,8 +166,10 @@
                         <viewLayoutGuide key="safeArea" id="FeK-7P-HHU"/>
                     </view>
                     <connections>
-                        <outlet property="answer" destination="uNs-Yx-ypv" id="vMV-ub-3zd"/>
-                        <outlet property="question" destination="J3u-zA-9VB" id="Ob3-ND-58E"/>
+                        <outlet property="answer" destination="Zrj-U9-Ok0" id="9gW-z6-VMI"/>
+                        <outlet property="continueOn" destination="hJS-t9-Sp0" id="gm3-1C-ASv"/>
+                        <outlet property="question" destination="J3u-zA-9VB" id="awW-xg-4fQ"/>
+                        <outlet property="results" destination="kXi-ny-wqg" id="Ete-zU-oV6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1li-Qc-Wc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -367,6 +384,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="pAh-xU-AHd"/>
+        <segue reference="SCe-0n-zai"/>
         <segue reference="wZ9-Ay-cqu"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -42,6 +42,24 @@ class question: UIViewController, UICollectionViewDelegate, UICollectionViewData
     private var selected = -1;
     @IBAction func setSelected(_ sender: UIButton) {
         selected = sender.tag
+        if submit.isEnabled == false {
+            submit.isEnabled = true
+        }
+    }
+    
+    //Updates score and sneds data to answer class.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "answer") {
+            let selectedAnswer = quizObj.getAnswers(index: quizObj.answered)[selected]
+            let answerVC = segue.destination as! Answer
+            if(quizObj.setCorrect(answer: selectedAnswer)) {
+                answerVC.backgroundColor = UIColor.green
+            }
+            quizObj.answered += 1
+            answerVC.quizObj = quizObj
+            answerVC.answer.text = selectedAnswer
+            answerVC.question.text = question.text
+        }
     }
     
 }

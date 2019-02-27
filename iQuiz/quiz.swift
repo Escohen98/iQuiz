@@ -88,8 +88,8 @@ class quiz {
      * Adds 1 to correct if answer is correct, returns true
      * Returns false if answer is incorrect
      */
-    func setCorrect(index: Int, answer: String) -> Bool {
-        if(isCorrect(index, answer)) {
+    func setCorrect(answer: String) -> Bool {
+        if(isCorrect(answered, answer)) {
             correct += 1
             return true
         }

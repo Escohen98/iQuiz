@@ -44,7 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -58,6 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let url = "http://tednewardsandbox.site44.com/questions.json"
     let savedJSON = UserDefaults.standard.string(forKey: "downloadedJSON")
     //Checks if there's a JSON saved. If yes, Creates quiz objects. Otherwise, downloads JSON then creates quiz objects.
+    var flag = false
     func isSaved() {
         //Checks if the user has a saved JSON file in their storage, if not will download
         if savedJSON != nil{
@@ -71,8 +72,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }else{
             print("No JSON Found")
-            download(url, self)
-            isSaved()
+            downloadFile().download(url, self)
+            if !flag {
+                flag = true
+                isSaved()
+            } else {
+                let alert = UIAlertController(title: "Oops.", message: "Something Went Wrong.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
