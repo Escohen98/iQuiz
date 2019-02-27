@@ -7,28 +7,37 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class question: UIViewController {
-
+class question: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let qText = quizObj.getQuestion(index: quizObj.answered) as? [String]
+        question.text = qText?[0]
+        colView.delegate = self
+        colView.dataSource = self
     }
     @IBOutlet weak var question: UILabel!
     
-    var correct : Int = -1
-    var score = 0
-    var questions : Dictionary<String, Dictionary<String, [String]>> = [:]
+    var quizObj : quiz = quiz(subject: "", questions: [JSON("")], description: "", icon: "")
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBOutlet weak var colView: UICollectionView!
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "questcell", for: indexPath) as! questionCell
+        cell.tag = indexPath.item
+        cell.lb.text = quizObj.getAnswers(index: quizObj.answered)[indexPath.item]
+        print("Done")
+        return cell
+    }
+}
 
+class questionCell : UICollectionViewCell {
+    @IBOutlet weak var lb: UILabel!
 }

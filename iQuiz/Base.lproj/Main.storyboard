@@ -126,14 +126,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Continue"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correcrt Answer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ry2-Yn-wXE">
+                                <rect key="frame" x="122" y="280.5" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="kqc-IU-e3J" firstAttribute="bottom" secondItem="cuW-r2-Tm4" secondAttribute="bottom" constant="48" id="6dS-Sa-HfO"/>
+                            <constraint firstItem="u16-6p-Eb8" firstAttribute="top" secondItem="Ry2-Yn-wXE" secondAttribute="bottom" constant="20" id="ZDM-GH-rkP"/>
                             <constraint firstItem="bs7-PX-Tfc" firstAttribute="top" secondItem="kqc-IU-e3J" secondAttribute="top" constant="25" id="bas-Ua-bJ6"/>
                             <constraint firstItem="u16-6p-Eb8" firstAttribute="centerX" secondItem="Y7U-po-VDC" secondAttribute="centerX" id="hMU-LW-u6t"/>
                             <constraint firstItem="cuW-r2-Tm4" firstAttribute="centerX" secondItem="Y7U-po-VDC" secondAttribute="centerX" id="nzZ-zs-LKU"/>
                             <constraint firstItem="bs7-PX-Tfc" firstAttribute="centerX" secondItem="Y7U-po-VDC" secondAttribute="centerX" id="vEc-vF-fjV"/>
+                            <constraint firstItem="Ry2-Yn-wXE" firstAttribute="centerX" secondItem="Y7U-po-VDC" secondAttribute="centerX" id="xLW-Fd-YHX"/>
                             <constraint firstItem="u16-6p-Eb8" firstAttribute="centerY" secondItem="Y7U-po-VDC" secondAttribute="centerY" id="yzg-bQ-XRa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kqc-IU-e3J"/>
@@ -207,6 +215,16 @@
         <!--Question-->
         <scene sceneID="c08-UN-5mA">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Csf-ug-QUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ear-3O-Rj8">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                    <viewLayoutGuide key="safeArea" id="S9O-aj-iaY"/>
+                </collectionViewCell>
                 <viewController id="SrQ-kd-HND" userLabel="Question" customClass="question" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCj-eR-V2I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -223,7 +241,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <segue destination="0F4-Uh-aoc" kind="show" identifier="answer" id="tTd-r0-Lzh"/>
+                                    <segue destination="0F4-Uh-aoc" kind="show" identifier="answerSegue" id="buj-S1-H1T"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hjv-sz-HMg">
@@ -236,7 +254,7 @@
                                     <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="20"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gZ1-Sq-zbA">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="questCell" id="gZ1-Sq-zbA" customClass="questionCell" customModule="iQuiz" customModuleProvider="target">
                                         <rect key="frame" x="20" y="0.0" width="150" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -251,70 +269,14 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="gog-2Y-bXz" firstAttribute="centerY" secondItem="gZ1-Sq-zbA" secondAttribute="centerY" id="7wm-k1-sBj"/>
                                             <constraint firstItem="gog-2Y-bXz" firstAttribute="centerX" secondItem="gZ1-Sq-zbA" secondAttribute="centerX" id="ATW-C6-cbr"/>
                                         </constraints>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="i11-Ty-iv9" userLabel="Cell2">
-                                        <rect key="frame" x="205" y="0.0" width="150" height="100"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKT-a1-jSE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="HKT-a1-jSE" firstAttribute="centerX" secondItem="i11-Ty-iv9" secondAttribute="centerX" id="7Ha-gG-MEp"/>
-                                            <constraint firstItem="HKT-a1-jSE" firstAttribute="centerY" secondItem="i11-Ty-iv9" secondAttribute="centerY" id="j6O-DC-p68"/>
-                                        </constraints>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rRg-Tz-1r3">
-                                        <rect key="frame" x="20" y="110" width="150" height="100"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hL1-tv-RhI">
-                                                    <rect key="frame" x="54" y="40" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="hL1-tv-RhI" firstAttribute="centerY" secondItem="rRg-Tz-1r3" secondAttribute="centerY" id="D8m-m9-CeJ"/>
-                                            <constraint firstItem="hL1-tv-RhI" firstAttribute="centerX" secondItem="rRg-Tz-1r3" secondAttribute="centerX" id="LMj-Tc-Gtt"/>
-                                        </constraints>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dgb-j5-Ade">
-                                        <rect key="frame" x="205" y="110" width="150" height="100"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bj6-t5-9XR">
-                                                    <rect key="frame" x="54" y="40" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="bj6-t5-9XR" firstAttribute="centerY" secondItem="dgb-j5-Ade" secondAttribute="centerY" id="Rlj-Qc-fiK"/>
-                                            <constraint firstItem="bj6-t5-9XR" firstAttribute="centerX" secondItem="dgb-j5-Ade" secondAttribute="centerX" id="lCA-Wb-cif"/>
-                                        </constraints>
+                                        <connections>
+                                            <outlet property="lb" destination="gog-2Y-bXz" id="g1C-JG-Gik"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -331,19 +293,10 @@
                         <viewLayoutGuide key="safeArea" id="ciw-uK-lK0"/>
                     </view>
                     <connections>
+                        <outlet property="colView" destination="hjv-sz-HMg" id="8kx-xI-pzB"/>
                         <outlet property="question" destination="OZm-wf-wPB" id="FGQ-R2-Pbz"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Csf-ug-QUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ear-3O-Rj8">
-                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </view>
-                    <viewLayoutGuide key="safeArea" id="S9O-aj-iaY"/>
-                </collectionViewCell>
             </objects>
             <point key="canvasLocation" x="392.80000000000001" y="-564.46776611694156"/>
         </scene>
@@ -417,6 +370,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QUP-qn-p3P"/>
+        <segue reference="wZ9-Ay-cqu"/>
     </inferredMetricsTieBreakers>
 </document>

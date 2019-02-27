@@ -18,7 +18,6 @@
 		49C518822225C41800211A41 /* answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C518812225C41800211A41 /* answer.swift */; };
 		49C518842225C42400211A41 /* finished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C518832225C42400211A41 /* finished.swift */; };
 		49C518862225C57F00211A41 /* question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C518852225C57F00211A41 /* question.swift */; };
-		49C518882225E84300211A41 /* quiz.json in Resources */ = {isa = PBXBuildFile; fileRef = 49C518872225E84300211A41 /* quiz.json */; };
 		49C5188A2225F27600211A41 /* options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C518892225F27600211A41 /* options.swift */; };
 		E6284ACE684C217CDC43A629 /* Pods_iQuiz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52FB9D8466F6651D1B67D789 /* Pods_iQuiz.framework */; };
 /* End PBXBuildFile section */
@@ -38,7 +37,6 @@
 		49C518812225C41800211A41 /* answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = answer.swift; sourceTree = "<group>"; };
 		49C518832225C42400211A41 /* finished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finished.swift; sourceTree = "<group>"; };
 		49C518852225C57F00211A41 /* question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = question.swift; sourceTree = "<group>"; };
-		49C518872225E84300211A41 /* quiz.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quiz.json; sourceTree = "<group>"; };
 		49C518892225F27600211A41 /* options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = options.swift; sourceTree = "<group>"; };
 		52FB9D8466F6651D1B67D789 /* Pods_iQuiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iQuiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF3CAF6437D2F2166594CAE /* Pods-iQuiz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iQuiz.debug.xcconfig"; path = "Target Support Files/Pods-iQuiz/Pods-iQuiz.debug.xcconfig"; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 		496A2CF62216653100F32183 /* iQuiz */ = {
 			isa = PBXGroup;
 			children = (
-				49C518872225E84300211A41 /* quiz.json */,
 				496A2D0B221CEE1500F32183 /* images */,
 				496A2CF72216653100F32183 /* AppDelegate.swift */,
 				490F6D062225318F00CCBBE8 /* iQuiz.xcdatamodeld */,
@@ -174,7 +171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				496A2D0C221CEE1500F32183 /* images in Resources */,
-				49C518882225E84300211A41 /* quiz.json in Resources */,
 				496A2D022216653200F32183 /* LaunchScreen.storyboard in Resources */,
 				496A2CFF2216653200F32183 /* Assets.xcassets in Resources */,
 				496A2CFD2216653100F32183 /* Main.storyboard in Resources */,

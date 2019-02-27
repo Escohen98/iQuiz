@@ -102,12 +102,18 @@ class quiz {
      * Uses index value in tuple to check. Returns true if yes, false otherwise. 
      */
     func isCorrect(_ index: Int, _ answer: String) -> Bool {
-        let ans = getAnswers(index: index)
-        let correct = questions[index]["answer"].stringValue
-        if ans[Int(correct)!] == answer {
+        
+        if getCorrect(index) == answer {
                 return true
         }
         return false
+    }
+    
+    //Returns the correct answer for the given question
+    func getCorrect(_ index: Int) -> String {
+        let ans = getAnswers(index: index)
+        let correct = questions[index]["answer"].stringValue
+        return ans[Int(correct)!]
     }
     
     //Sets correct answers and answered questions to 0.

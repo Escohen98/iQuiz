@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreData
 import Alamofire
 import SwiftyJSON
 
@@ -40,6 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         cell.desc.text = qzzs[indexPath.item].getDescription()
         cell.imageView?.image = UIImage(named: qzzs[indexPath.item].getIcon())
+        cell.tag = indexPath.item
         return cell
     }
 
@@ -91,6 +91,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+    
+    //Sends quiz object to questionVC.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "quizSelect") {
+            let questionVC = segue.destination as! question
+            let newSender = sender as? UITableViewCell
+            questionVC.quizObj = qzzs[newSender!.tag]
         }
     }
     
