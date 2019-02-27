@@ -30,9 +30,10 @@ class quiz {
     private let QCOUNT : Int //Number of questions.
     private let subject : String
     private let questions : JSON //Contains all questions/answer pairs (String/Array<String>)
-    private var correct = 0 //Contains booleans of whether a user got the question correct or not.
+    private var correct = 0 //Number of questions answered correctly
     private let description: String
     private let icon: String
+    var answered = 0 //Number of questions answered
     
     //Returns the subject
     func getSubject() -> String {
@@ -75,9 +76,10 @@ class quiz {
      * Otherwise returns an empty array.
      */
     func getAnswers(key: String) -> Any {
-        
+        var answers : Array<String> = []
+        let array = questions[key]["answers"].arrayValue
         for ans : JSON in questions[key].arrayValue {
-            
+            answers.append(ans["answer"].)
         }
         if((questions[key]) != nil) {
             return questions[key]!
@@ -103,22 +105,31 @@ class quiz {
      * Uses index value in tuple to check. Returns true if yes, false otherwise. 
      */
     func isCorrect(_ question: String, _ answer: String) -> Bool {
-        let qstn = questions[question]
-        if 	qstn!["answer"]!.index(of: answer) == Int(qstn!["correct"]![0]) {
+        let ans = questions[question]["answers"].arrayValue
+        let correct = questions[question]["correct"][0].stringValue
+        if ans[Int(correct)!].stringValue == answer {
+                return true
+        }
+        return false
+    }
+    
+    //Sets correct answers and answered questions to 0.
+    func resetAnswers() {
+        correct = 0
+        answered = 0
+    }
+    
+    //Returns the current score
+    func getScore() -> Double {
+        return Double(correct)/Double(answered)
+    }
+    
+    //Checks if user has answered all of the questions for the given quiz. Returns true if finished. False otherwise.
+    func finished() -> Bool {
+        if(answered == QCOUNT) {
             return true
         }
         return false
     }
     
-    //Sets correct answers to 0.
-    func resetAnswers() {
-        correct = 0
-    }
-    
-}
-
-protocol QuizRepository {
-    func getTopics() -> [quiz]
-    func saveQuiz(data: [quiz]) -> Bool
-    func findQuizByTopic(_ topic: String) -> [quiz]
 }
