@@ -30,9 +30,9 @@ class options: UIViewController {
             if response.result.value != nil {
                 let data = JSON(response.result.value as Any)
                 
-                for items in data{
-                    print(items)
-                }
+                //for items in data{
+                  //  print(items)
+                //}
                 
                 //We got the data, now we'll save the data in its state as a String
                 UserDefaults.standard.set(data.rawString(), forKey: "downloadedJSON")

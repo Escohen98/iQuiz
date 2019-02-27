@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 //scores is the only mutable object declared in class. Everything else is read-only after initialize.
 class quiz {
@@ -17,7 +18,7 @@ class quiz {
     * @param questions (NSDictionary<String, Array<String>) - A dictionary containing all of the questions
     * and an array of the answers for each question.
     */
-    init(subject: String, questions: Dictionary<String, Dictionary<String, [String]>>, description: String, icon: String) {
+    init(subject: String, questions: JSON, description: String, icon: String) {
         self.subject = subject
         self.questions = questions //NSDictionary<String, Array<String>>
         self.description = description
@@ -28,7 +29,7 @@ class quiz {
     
     private let QCOUNT : Int //Number of questions.
     private let subject : String
-    private let questions : Dictionary<String, Dictionary<String, [String]>> //Contains all questions/answer pairs (String/Array<String>)
+    private let questions : JSON //Contains all questions/answer pairs (String/Array<String>)
     private var correct = 0 //Contains booleans of whether a user got the question correct or not.
     private let description: String
     private let icon: String
@@ -57,7 +58,10 @@ class quiz {
      * Returns an array of all of the questions.
      */
     func getQuestion(index: Int = -1) -> [Any] {
-        let keys = Array(questions.keys)
+        var keys : Array<String> = []
+        for (key, innerJSON) : (String, JSON) in questions {
+            keys.append(key)
+        }
         if(index == -1) {
             return keys
         } else if index > QCOUNT-1 || index < 0 {
@@ -71,6 +75,10 @@ class quiz {
      * Otherwise returns an empty array.
      */
     func getAnswers(key: String) -> Any {
+        
+        for ans : JSON in questions[key].arrayValue {
+            
+        }
         if((questions[key]) != nil) {
             return questions[key]!
         }
