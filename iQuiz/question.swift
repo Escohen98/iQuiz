@@ -57,7 +57,8 @@ class question: UIViewController, UICollectionViewDelegate, UICollectionViewData
             }
             quizObj.answered += 1
             answerVC.quizObj = quizObj
-            answerVC.answerImport = selectedAnswer
+            //Correct Answer
+            answerVC.answerImport = quizObj.getAnswers(index: quizObj.answered-1)[quizObj.getCorrect(index: quizObj.answered-1)] 
             answerVC.questionImport = question.text!
         }
     }

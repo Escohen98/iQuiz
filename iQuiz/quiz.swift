@@ -112,8 +112,14 @@ class quiz {
     //Returns the correct answer for the given question
     func getCorrect(_ index: Int) -> String {
         let ans = getAnswers(index: index)
+        return ans[getCorrect(index: index)]
+    }
+    
+    //Returns the index of the correct answer.
+    //index is the question index not the answer index.
+    func getCorrect(index: Int) -> Int {
         let correct = questions[index]["answer"].stringValue
-        return ans[Int(correct)!-1]
+        return Int(correct)!-1
     }
     
     //Sets correct answers and answered questions to 0.
