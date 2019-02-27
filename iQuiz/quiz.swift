@@ -18,7 +18,7 @@ class quiz {
     * @param questions (NSDictionary<String, Array<String>) - A dictionary containing all of the questions
     * and an array of the answers for each question.
     */
-    init(subject: String, questions: JSON, description: String, icon: String) {
+    init(subject: String, questions: [JSON], description: String, icon: String) {
         self.subject = subject
         self.questions = questions //NSDictionary<String, Array<String>>
         self.description = description
@@ -28,8 +28,8 @@ class quiz {
     }
     
     private let QCOUNT : Int //Number of questions.
-    private let subject : String
-    private let questions : JSON //Contains all questions/answer pairs (String/Array<String>)
+    private let subject : String //Title
+    private let questions : [JSON] //Contains all questions/answer pairs (String/Array<String>)
     private var correct = 0 //Number of questions answered correctly
     private let description: String
     private let icon: String
@@ -60,8 +60,8 @@ class quiz {
      */
     func getQuestion(index: Int = -1) -> [Any] {
         var keys : Array<String> = []
-        for (key, innerJSON) : (String, JSON) in questions {
-            keys.append(key)
+        for qs in questions {
+            keys.append(qs["text"].stringValue)
         }
         if(index == -1) {
             return keys
@@ -72,27 +72,24 @@ class quiz {
     }
     
     /*
-     * Takes in a key string and returns the corresponding value pair if exists.
+     * Takes an index and returns the answers for the given index.
      * Otherwise returns an empty array.
      */
-    func getAnswers(key: String) -> Any {
+    func getAnswers(index: Int) -> Array<String> {
         var answers : Array<String> = []
-        let array = questions[key]["answers"].arrayValue
-        for ans : JSON in questions[key].arrayValue {
-            answers.append(ans["answer"].)
+        let array = questions[index]["answers"].arrayValue
+        for ans : JSON in array {
+            answers.append(ans.stringValue)
         }
-        if((questions[key]) != nil) {
-            return questions[key]!
-        }
-        return []
+            return answers
     }
     
     /*
      * Adds 1 to correct if answer is correct, returns true
      * Returns false if answer is incorrect
      */
-    func setCorrect(question: String, answer: String) -> Bool {
-        if(isCorrect(question, answer)) {
+    func setCorrect(index: Int, answer: String) -> Bool {
+        if(isCorrect(index, answer)) {
             correct += 1
             return true
         }
@@ -104,10 +101,10 @@ class quiz {
      * Checks if given answer is correct one for the given answer.
      * Uses index value in tuple to check. Returns true if yes, false otherwise. 
      */
-    func isCorrect(_ question: String, _ answer: String) -> Bool {
-        let ans = questions[question]["answers"].arrayValue
-        let correct = questions[question]["correct"][0].stringValue
-        if ans[Int(correct)!].stringValue == answer {
+    func isCorrect(_ index: Int, _ answer: String) -> Bool {
+        let ans = getAnswers(index: index)
+        let correct = questions[index]["answer"].stringValue
+        if ans[Int(correct)!] == answer {
                 return true
         }
         return false

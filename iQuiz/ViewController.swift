@@ -15,21 +15,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //https://api.myjson.com/bins/19qiyy
     @IBOutlet weak var tableView: UITableView!
     
-    var titles: [String] = ["Math", "Science", "History", "Countries"]
+    let titles: [String] = ["Mathematics", "Marvel Super Heroes", "Science"]
     
-    let descriptions: [String] = ["Test your math skills!", "What's an atom?", "Visit the Moonlanding Set!", "Countries can be big."]
-    let icons: [String] = ["images/math_ico.jpg", "images/science_ico.jpg", "images/history_ico.jpg", "images/country_ico.jpeg"]
-    let options : options = options()
+    let descriptions: [String] = ["Test your math skills!", "Woh, Superheroes!", "What's an atom?"]
+    let icons: [String] = ["images/math_ico.jpg", "images/marvel_ico.png", "images/science_ico.jpg"]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return descriptions.count
+        return qzzs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "qcell", for: indexPath) as! QuizCell
-        print("indexPath: \(indexPath.item)")
-        print("qzzs length: \(qzzs.count)")
-        let str = titles[indexPath.item]
+        let str = qzzs[indexPath.item].getSubject()
         print(str)
         //Takes first 30 characters of a string
         //Because substrings are so unnecessarily complicated.
@@ -41,22 +38,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             cell.title.text = str
         }
-        cell.desc.text = descriptions[indexPath.item]
-        cell.imageView?.image = UIImage(named: icons[indexPath.item])
+        cell.desc.text = qzzs[indexPath.item].getDescription()
+        cell.imageView?.image = UIImage(named: qzzs[indexPath.item].getIcon())
         return cell
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        isSaved()
         tableView.delegate = self
         tableView.dataSource = self
     }
     
     //Taken from https://nearsoft.com/blog/how-to-get-started-with-alamofire/
-    let url = "https://api.myjson.com/bins/c2gpm"
+    //let url = "https://api.myjson.com/bins/c2gpm"
+    let url = "http://tednewardsandbox.site44.com/questions.json"
     let savedJSON = UserDefaults.standard.string(forKey: "downloadedJSON")
+    //Checks if there's a JSON saved. If yes, Creates quiz objects. Otherwise, downloads JSON then creates quiz objects.
     func isSaved() {
         //Checks if the user has a saved JSON file in their storage, if not will download
         if savedJSON != nil{
@@ -65,12 +64,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             let data = JSON.init(parseJSON: savedJSON!)
             
-            ParseJSON(json: data)
+            setQuizzes(json: data)
+            
             
         }else{
             print("No JSON Found")
-            options.DownloadJSON(url: url)
-
+            download(url, self)
+            isSaved()
+        }
     }
     
     //[String: [String: [String: [[String], [String: Int]]]]
@@ -80,9 +81,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func setQuizzes(json: JSON) {
         var i = 0
         for (key, innerJSON) : (String, JSON) in json {
-            qzzs.append(quiz(subject: key, questions: innerJSON, description: descriptions[i], icon: icons[i]))
+            let q = innerJSON["questions"].arrayValue
+            let desc = innerJSON["desc"].stringValue
+            let title = innerJSON["title"].stringValue
+            print(title)
+            qzzs.append(quiz(subject: title, questions: q, description: desc, icon: icons[i%3]))
             i += 1
             
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
     

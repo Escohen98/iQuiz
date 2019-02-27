@@ -69,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				496A2CF62216653100F32183 /* iQuiz */,
-				496A2CF52216653100F32183 /* Products */,
 				37C3B68FDAE2CF8E9A7F923E /* Pods */,
 				C265428E3BA6FF9DE78F843D /* Frameworks */,
 			);
@@ -81,6 +80,7 @@
 				496A2CF42216653100F32183 /* iQuiz.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		496A2CF62216653100F32183 /* iQuiz */ = {
@@ -100,6 +100,7 @@
 				496A2CFE2216653200F32183 /* Assets.xcassets */,
 				496A2D002216653200F32183 /* LaunchScreen.storyboard */,
 				496A2D032216653200F32183 /* Info.plist */,
+				496A2CF52216653100F32183 /* Products */,
 			);
 			path = iQuiz;
 			sourceTree = "<group>";
