@@ -19,7 +19,6 @@ class question: UIViewController, UICollectionViewDelegate, UICollectionViewData
         cell.tag = indexPath.item
         cell.button.setTitle(quizObj.getAnswers(index: quizObj.answered)[indexPath.item], for: .normal)
             cell.button.tag = indexPath.item
-        print("Done")
         return cell
     }
     

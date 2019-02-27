@@ -13,7 +13,7 @@ class finished: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let grade = quizObj.getScore()
+        let grade = Double(round(quizObj.getScore()*10000)/10000)
         let textGrade = String(grade*100)
         score.text = "\(textGrade)%"
         let dT = "Your Grade:  "

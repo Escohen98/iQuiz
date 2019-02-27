@@ -26,7 +26,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "qcell", for: indexPath) as! QuizCell
         let str = qzzs[indexPath.item].getSubject()
-        print(str)
         //Takes first 30 characters of a string
         //Because substrings are so unnecessarily complicated.
         if(str.count > 30) {
@@ -94,7 +93,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let q = innerJSON["questions"].arrayValue
             let desc = innerJSON["desc"].stringValue
             let title = innerJSON["title"].stringValue
-            print(title)
             qzzs.append(quiz(subject: title, questions: q, description: desc, icon: icons[i%3]))
             i += 1
             
