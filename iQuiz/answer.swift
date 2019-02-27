@@ -13,7 +13,8 @@ class Answer: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        continueOn.isHidden = true
+        continueOn.isHidden = false
+        results.isHidden = true
         if(quizObj.getQuestionCount() == quizObj.answered) {
             results.isHidden = false
             continueOn.isHidden = true
@@ -33,7 +34,7 @@ class Answer: UIViewController {
     var questionImport = ""
     
     
-    //Updates score and sneds data to answer class.
+    //Loads next question if available, otherwise goes to finished class.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "continue") {
             let questionVC = segue.destination as! question

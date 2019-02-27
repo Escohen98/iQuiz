@@ -16,8 +16,8 @@ class finished: UIViewController {
         let grade = quizObj.getScore()
         let textGrade = String(grade*100)
         score.text = "\(textGrade)%"
-        descriptiveText.text = "Your Grade:  "
-        /*switch grade {
+        let dT = "Your Grade:  "
+        switch grade {
         case let g where g >= 0.9:
             descriptiveText.text = "\(dT)A!"
             break
@@ -34,7 +34,7 @@ class finished: UIViewController {
             descriptiveText.text = "\(dT)F..."
             break
             
-        }*/
+        }
         
     }
     @IBOutlet weak var descriptiveText: UILabel!
